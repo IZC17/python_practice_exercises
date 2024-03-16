@@ -2501,7 +2501,7 @@ B Y"""
 
 """Roca vence a Tijeras, Tijeras vence a Papel y Papel vence a Piedra"""
 
-A = "Piedra"
+'''A = "Piedra"
 B = "Papel"
 C = "Tijeras"
 
@@ -2515,7 +2515,7 @@ Tijeras = 3
 
 Derrota = 0
 Empate = 3
-Victoria = 6
+Victoria = 6'''
 
 dataset_list_format = Dataset.split("\n")
 
