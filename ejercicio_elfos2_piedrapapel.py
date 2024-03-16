@@ -2520,30 +2520,43 @@ Victoria = 6
 dataset_list_format = Dataset.split("\n")
 election_value_list = []
 game_result_list = []
-#dataset_game_list = []
 for dataset_game in dataset_list_format:
     dataset_game
     
     dataset_game_list = dataset_game.split(" ")
-    print(dataset_game_list)
-    """     print(dataset_game_list)
+
+    if dataset_game_list[0] == "A":
+        dataset_game_list[0] = "Piedra"
+    elif dataset_game_list[0] == "B":
+        dataset_game_list[0] = "Papel"
+    elif dataset_game_list[0] == "C":
+        dataset_game_list[0] = "Tijeras"
+    
     if dataset_game_list[1] == "X":
-        element_value = 1
+        dataset_game_list[1] = "Piedra"
     elif dataset_game_list[1] == "Y":
-        element_value = 2
+        dataset_game_list[1] = "Papel"
     elif dataset_game_list[1] == "Z":
+        dataset_game_list[1] = "Tijeras"
+    
+    if dataset_game_list[1] == "Piedra":
+        element_value = 1
+    elif dataset_game_list[1] == "Papel":
+        element_value = 2
+    elif dataset_game_list[1] == "Tijeras":
         element_value = 3
     election_value_list.append(element_value)
-     """
+    
+    
     game_result = 9
-    if   (dataset_game_list[0] == "A" and dataset_game_list[1] == "X") or (dataset_game_list[0] == "B" and dataset_game_list[1] == "Y") or (dataset_game_list[0] == "C" and dataset_game_list[1] == "Z"):
+    if   dataset_game_list[0] == dataset_game_list[1]:
         game_result = 3
-    elif (dataset_game_list[0] == "C" and dataset_game_list[1] == "X") or (dataset_game_list[0] == "B" and dataset_game_list[1] == "Z") or (dataset_game_list[0] == "A" and dataset_game_list[1] == "Y"):
+    elif (dataset_game_list[0] == "Piedra" and dataset_game_list[1] == "Papel") or (dataset_game_list[0] == "Papel" and dataset_game_list[1] == "Tijeras") or (dataset_game_list[0] == "Tijeras" and dataset_game_list[1] == "Piedra"):
         game_result = 6
-    elif (dataset_game_list[1] == "C" and dataset_game_list[0] == "X") or (dataset_game_list[1] == "B" and dataset_game_list[0] == "Z") or (dataset_game_list[1] == "A" and dataset_game_list[0] == "Y"):
+    elif (dataset_game_list[1] == "Piedra" and dataset_game_list[0] == "Papel") or (dataset_game_list[1] == "Papel" and dataset_game_list[0] == "Tijeras") or (dataset_game_list[1] == "Tijeras" and dataset_game_list[0] == "Piedra"):
         game_result = 0
-    print(game_result)
-    #game_result_list.append(game_result)
-    print(game_result)
+    game_result_list.append(game_result)
+
+print(f"El resultado de escoger un elemento es {sum(election_value_list)} y el marcador total de los juegos seria {sum(game_result_list)} sumados ambos darian un total de {sum(election_value_list) + sum(game_result_list)}")
 
 #print(sum(election_value_list))
