@@ -2518,8 +2518,10 @@ Empate = 3
 Victoria = 6
 
 dataset_list_format = Dataset.split("\n")
+
 election_value_list = []
 game_result_list = []
+
 for dataset_game in dataset_list_format:
     dataset_game
     
@@ -2557,6 +2559,64 @@ for dataset_game in dataset_list_format:
         game_result = 0
     game_result_list.append(game_result)
 
-print(f"El resultado de escoger un elemento es {sum(election_value_list)} y el marcador total de los juegos seria {sum(game_result_list)} sumados ambos darian un total de {sum(election_value_list) + sum(game_result_list)}")
+print(f"Parte 1: El resultado de escoger un elemento es {sum(election_value_list)} y el marcador total de los juegos seria {sum(game_result_list)} sumados ambos darian un total de {sum(election_value_list) + sum(game_result_list)}")
+
+election_value_list_pt2 = []
+game_result_list_pt2 = []
+
+for dataset_game_pt2 in dataset_list_format:
+    dataset_game_pt2
+    
+    dataset_game_pt2_list = dataset_game_pt2.split(" ")
+        
+    """X = Perder
+    Y = Empate
+    Z = Ganar"""
+
+    if dataset_game_pt2_list[0] == "A":
+        dataset_game_pt2_list[0] = "Piedra"
+    elif dataset_game_pt2_list[0] == "B":
+        dataset_game_pt2_list[0] = "Papel"
+    elif dataset_game_pt2_list[0] == "C":
+        dataset_game_pt2_list[0] = "Tijeras"
+    
+    if dataset_game_pt2_list[1] == "X":
+        if dataset_game_pt2_list[0] == "Piedra":
+          dataset_game_pt2_list[1] = "Tijeras"  
+        elif dataset_game_pt2_list[0] == "Papel":
+            dataset_game_pt2_list[1] = "Piedra" 
+        elif dataset_game_pt2_list[0] == "Tijeras":
+            dataset_game_pt2_list[1] = "Papel" 
+            
+    elif dataset_game_pt2_list[1] == "Y":
+        dataset_game_pt2_list[1] = dataset_game_pt2_list[0]
+        
+    if dataset_game_pt2_list[1] == "Z":
+        if dataset_game_pt2_list[0] == "Piedra":
+          dataset_game_pt2_list[1] = "Papel"  
+        elif dataset_game_pt2_list[0] == "Papel":
+            dataset_game_pt2_list[1] = "Tijeras" 
+        elif dataset_game_pt2_list[0] == "Tijeras":
+            dataset_game_pt2_list[1] = "Piedra"
+    
+    if dataset_game_pt2_list[1] == "Piedra":
+        element_value = 1
+    elif dataset_game_pt2_list[1] == "Papel":
+        element_value = 2
+    elif dataset_game_pt2_list[1] == "Tijeras":
+        element_value = 3
+    election_value_list_pt2.append(element_value)
+    
+    
+    game_result = 9
+    if   dataset_game_pt2_list[0] == dataset_game_pt2_list[1]:
+        game_result = 3
+    elif (dataset_game_pt2_list[0] == "Piedra" and dataset_game_pt2_list[1] == "Papel") or (dataset_game_pt2_list[0] == "Papel" and dataset_game_pt2_list[1] == "Tijeras") or (dataset_game_pt2_list[0] == "Tijeras" and dataset_game_pt2_list[1] == "Piedra"):
+        game_result = 6
+    elif (dataset_game_pt2_list[1] == "Piedra" and dataset_game_pt2_list[0] == "Papel") or (dataset_game_pt2_list[1] == "Papel" and dataset_game_pt2_list[0] == "Tijeras") or (dataset_game_pt2_list[1] == "Tijeras" and dataset_game_pt2_list[0] == "Piedra"):
+        game_result = 0
+    game_result_list_pt2.append(game_result)
+    
+print(f"Parte 2: El resultado de escoger un elemento es {sum(election_value_list_pt2)} y el marcador total de los juegos seria {sum(game_result_list_pt2)} sumados ambos darian un total de {sum(election_value_list_pt2) + sum(game_result_list_pt2)}")
 
 #print(sum(election_value_list))
