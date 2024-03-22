@@ -301,7 +301,6 @@ bCTPTclcgRZQZCgs"""
 
 #Primera parte del ejercicio
 entry_list = entry.split("\n")
-print(len(entry_list))
 priority_list = []
 priority_dataset = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
@@ -317,30 +316,19 @@ print(f"Parte 1: La suma de las prioridades es {sum(priority_list)}")
 
 #Segunda parte del ejercicio
 index_number = 0
+lista = []
 for group_rucksacks in entry_list:
     if index_number <= len(entry_list)-3:
         group_rucksacks = entry_list[index_number:index_number+3]
-        print(group_rucksacks)
-        print(group_rucksacks[0])
         individual_rucksack1 = set(group_rucksacks[0])
         individual_rucksack2 = set(group_rucksacks[1])
-        individual_rucksack3 =set(list(group_rucksacks[2]))
-        print(individual_rucksack1)
-        print(individual_rucksack2)
-        print(individual_rucksack3)
+        individual_rucksack3 =set(group_rucksacks[2])
         common_item = individual_rucksack1 & individual_rucksack2 & individual_rucksack3
-        print(common_item)
         common_item = "".join(common_item)
         priority = priority_dataset.index(common_item)+1  
-        print(priority)  
-        priority_list.append(priority)
+        lista.append(priority)
         index_number = index_number+3
     elif index_number >= len(entry_list)-3: 
         break
-    
-print(len(priority_list))
 
-print(f"Parte 2: La suma de las prioridades es {sum(priority_list)}")
-
-    
-    
+print(f"Parte 2: La suma de las prioridades es {sum(lista)}")
