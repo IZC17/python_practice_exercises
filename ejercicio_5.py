@@ -570,20 +570,20 @@ instructions_entry = instructions_entry.replace("from ", "")
 instructions_entry = instructions_entry.replace("to ", "")
 instructions_entry = instructions_entry.split("\n")
 
+#Respuesta primer ejercicio
 for instructions in instructions_entry:
     instructions = instructions.split(" ")
     
     column_to_extract = all_columns[int(instructions[1])-1]
     
     element_to_insert = column_to_extract[:int(instructions[0])]
-    
+
     target_column = all_columns[int(instructions[2])-1]
     
     for element_str_to_insert in element_to_insert:
         target_column.insert(0, element_str_to_insert)
             
     del column_to_extract[:int(instructions[0])]
-
 answer_pt1 = ""
 all_columns_index = 0
 for first_element in all_columns:
@@ -591,13 +591,27 @@ for first_element in all_columns:
     first_element = first_element[0]
     answer_pt1 += first_element 
     
-print(answer_pt1)
+print(f"La respuesta del primer ejercicio es {answer_pt1}")
 
-print(all_columns)
+#Respuesta segundo ejercicio
+for instructions in instructions_entry:
+    instructions = instructions.split(" ")
+    
+    column_to_extract = all_columns[int(instructions[1])-1]
+    
+    element_to_insert = column_to_extract[:int(instructions[0])]
 
-
-
-
-
-
-
+    target_column = all_columns[int(instructions[2])-1]
+    
+    for element_str_to_insert in element_to_insert[::-1]:
+        target_column.insert(0, element_str_to_insert)
+            
+    del column_to_extract[:int(instructions[0])]
+answer_pt2 = ""
+all_columns_index = 0
+for first_element in all_columns:
+    first_element[all_columns_index]
+    first_element = first_element[0]
+    answer_pt2 += first_element 
+    
+print(f"La respuesta del segundo ejercicio es {answer_pt2}")
