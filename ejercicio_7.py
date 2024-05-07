@@ -1167,5 +1167,6 @@ for x in filtered_list:
         elif ".." in x:
             dir_list.pop(-1)
         print(dir_list)
+        
 
         
