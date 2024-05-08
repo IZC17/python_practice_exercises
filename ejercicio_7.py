@@ -1131,12 +1131,11 @@ for create_list in input_list:
 
 index = 0
 filtered_list = []
+index_cd_list = []
 for elements_in_dirs in input_dirs_slice:
-    
     if elements_in_dirs.__contains__("ls"):
         continue
     else:
-    
         if type(elements_in_dirs) == str:
             if elements_in_dirs[0].isalnum() == True:
                 elements_in_dirs = elements_in_dirs.split(" ")
@@ -1144,9 +1143,12 @@ for elements_in_dirs in input_dirs_slice:
                 elements_in_dirs = "".join(elements_in_dirs)
                 elements_in_dirs = int(elements_in_dirs)
     filtered_list.append(elements_in_dirs)
+    if type(elements_in_dirs)== str:
+        if "cd" in elements_in_dirs:
+            index_cd_list.append(input_dirs_slice.index(elements_in_dirs))
     index = index+1
 
-
+print(index_cd_list)
 print(filtered_list)   
 
 dir_list = []
