@@ -1131,7 +1131,7 @@ for create_list in input_list:
 
 index = 0
 filtered_list = []
-index_cd_list = []
+
 for elements_in_dirs in input_dirs_slice:
     if elements_in_dirs.__contains__("ls"):
         continue
@@ -1143,13 +1143,16 @@ for elements_in_dirs in input_dirs_slice:
                 elements_in_dirs = "".join(elements_in_dirs)
                 elements_in_dirs = int(elements_in_dirs)
     filtered_list.append(elements_in_dirs)
-    if type(elements_in_dirs)== str:
-        if "cd" in elements_in_dirs:
-            index_cd_list.append(input_dirs_slice.index(elements_in_dirs))
     index = index+1
+    
+print(filtered_list)    
+index_cd_list = []
 
-print(index_cd_list)
-print(filtered_list)   
+for index_cd in filtered_list:
+    if type(index_cd)== str:
+        if "cd" in index_cd:
+            index_cd_list.append(filtered_list.index(index_cd))
+
 
 dir_list = []
 
@@ -1159,16 +1162,36 @@ for x in filtered_list:
             dir_list.append(x[5:])
             actual_position = filtered_list.index(x)
             print(actual_position)
+            
             if ([x[5:]]) in filtered_list:
                 index_position_list_element = filtered_list.index([x[5:]])
                 print("sí")
                 print([x[5:]])
                 print (index_position_list_element)
-            else:
-                print("no")
+                print(filtered_list[index_position_list_element])
+                
+
+
+                for element_to_append in range(index_cd_list[0], index_cd_list[1]):
+                    print(index_cd_list)
+                    if len(index_cd_list)>1 and type(filtered_list[element_to_append]) != str:
+                        filtered_list[index_position_list_element].append(filtered_list[element_to_append])
+                    else:
+                        continue
+                index_cd_list.pop(0)
+                print(filtered_list)
+
+
         elif ".." in x:
             dir_list.pop(-1)
+            
+
+
         print(dir_list)
+
+
+
+print(filtered_list)
         
 
         
